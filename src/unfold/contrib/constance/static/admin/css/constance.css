@@ -1,0 +1,74 @@
+#result_list .changed {
+    background-color: #ffc;
+}
+#changelist table thead th .text {
+    padding: 2px 5px;
+}
+#changelist table tbody td:first-child {
+    text-align: left;
+}
+#changelist-form ul.errorlist {
+    margin: 0 !important;
+}
+.help {
+    font-weight: normal !important;
+}
+#results {
+    overflow-x: auto;
+}
+.item-anchor {
+    visibility: hidden;
+    margin-left: .1em;
+} 
+.item-name {
+    white-space: nowrap;
+}
+.item-name:hover .item-anchor {
+    visibility: visible;
+}
+.sticky-footer {
+    position: sticky;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+/* 
+  This file is used to apply styles in the folder page and to resolve issues 
+  related to the navbar when integrating with django-filer. 
+*/
+.filter-files-container .filter-files-button {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 35px !important;
+}
+
+#main .breadcrumbs {
+    display: none;
+}
+
+.actionsIcons {
+    display: flex;
+    padding: 10px;
+    margin: 10px 0;
+    column-gap: 15px;
+}
+
+form .form-row .filer-dropzone .filerFile a.filerClearer {
+    border: 1px solid rgb(107 114 128/var(--tw-text-opacity)) !important;
+    background-color: transparent !important;
+}
+
+/* This is used to override the css of django filer. 
+    Without this override, the navbar appears broken.
+ */
+.simplebar-content>div {
+    display: block !important;
+}
+
+/* This is used to override the css of django filer. 
+    Without this override, the navbar appears broken.
+ */
+.filebrowser h2 {
+    display: block !important;
+}

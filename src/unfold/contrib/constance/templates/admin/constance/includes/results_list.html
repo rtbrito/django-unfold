@@ -1,0 +1,131 @@
+{% load admin_list static i18n %}
+
+<div class="overflow-x-auto lg:border lg:rounded-md lg:shadow-sm lg:dark:border-gray-800 mb-6{% if cl.model_admin.list_horizontal_scrollbar_top %}simplebar-horizontal-scrollbar-top{% endif %}" data-simplebar data-simplebar-auto-hide="false">
+    <table id="result_list" class="block border-gray-200 border-spacing-none border-separate w-full lg:table">
+        <thead>
+            <tr>
+                <th class="align-middle font-semibold py-2 text-left text-font-important-light dark:text-font-important-dark whitespace-nowrap {{ header.class_attrib }} {% if "action-toggle" in header.text and forloop.counter == 1 %}lg:px-3 lg:w-10{% else %}hidden px-3 lg:table-cell{% endif %}" scope="col">
+                    <div class="flex items-center">
+                        <div class="text">                                
+                            <span>
+                                {% trans "Name" %}
+                            </span>
+                        </div>
+                    </div>
+                </th>
+                <th class="align-middle font-semibold py-2 text-left text-font-important-light dark:text-font-important-dark whitespace-nowrap {{ header.class_attrib }} {% if "action-toggle" in header.text and forloop.counter == 1 %}lg:px-3 lg:w-10{% else %}hidden px-3 lg:table-cell{% endif %}" scope="col">
+                    <div class="flex items-center">
+                        <div class="text">                                
+                            <span>
+                                {% trans "Default" %}
+                            </span>
+                        </div>
+                    </div>
+                </th>
+                <th class="align-middle font-semibold py-2 text-left text-font-important-light dark:text-font-important-dark whitespace-nowrap {{ header.class_attrib }} {% if "action-toggle" in header.text and forloop.counter == 1 %}lg:px-3 lg:w-10{% else %}hidden px-3 lg:table-cell{% endif %}" scope="col">
+                    <div class="flex items-center">
+                        <div class="text">                                
+                            <span>
+                                {% trans "Value" %}
+                            </span>
+                        </div>
+                    </div>
+                </th>
+                <th class="align-middle font-semibold py-2 text-left text-font-important-light dark:text-font-important-dark whitespace-nowrap {{ header.class_attrib }} {% if "action-toggle" in header.text and forloop.counter == 1 %}lg:px-3 lg:w-10{% else %}hidden px-3 lg:table-cell{% endif %}" scope="col">
+                    <div class="flex items-center">
+                        <div class="text">                                
+                            <span>
+                                {% trans "Is modified" %}
+                            </span>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+
+        <tbody class="block lg:table-row-group">
+            {% for item in config_values %}
+                <tr class="{% cycle '' 'bg-gray-50 dark:bg-white/[.02]' %} block border mb-3 rounded-md shadow-sm lg:table-row lg:border-none lg:mb-0 lg:shadow-none dark:border-gray-800">
+                    <td data-label="{% trans "Name" %}" class="field-actions_holder align-middle flex border-t border-gray-200 font-normal px-3 py-2 text-left text-sm before:block before:capitalize before:content-[attr(data-label)] before:mr-auto before:text-gray-500 dark:before:text-gray-300 lg:before:hidden lg:py-3 lg:table-cell dark:border-gray-800 lg:w-px">
+                        <div class="flex flex-col">
+                            <span class="item-name" id="{{ item.name|slugify }}">
+                                {{ item.name }}
+                                <a class="item-anchor" href="#{{ item.name|slugify }}" title="Link to this setting"></a>
+                            </span>
+                            <div class="help">{{ item.help_text|linebreaksbr }}</div>
+                        </div>
+                    </td>
+                    <td data-label="{% trans "Default" %}" class="field-actions_holder align-middle flex border-t border-gray-200 font-normal px-3 py-2 text-left text-sm before:block before:capitalize before:content-[attr(data-label)] before:mr-auto before:text-gray-500 dark:before:text-gray-300 lg:before:hidden lg:py-3 lg:table-cell dark:border-gray-800 lg:w-px">
+                        {{ item.default|linebreaks }}
+                    </td>
+                    <td data-label="{% trans "Value" %}" class="field-actions_holder align-middle flex border-t border-gray-200 font-normal px-3 py-2 text-left text-sm before:block before:capitalize before:content-[attr(data-label)] before:mr-auto before:text-gray-500 dark:before:text-gray-300 lg:before:hidden lg:py-3 lg:table-cell dark:border-gray-800 lg:w-px">
+                        {{ item.form_field.errors }}
+                        {% if item.is_file %}{% trans "Current file" %}: <a class="text" href="{% get_media_prefix as MEDIA_URL %}{{ MEDIA_URL }}{{ item.value }}" target="_blank">{{ item.value }}</a>{% endif %}
+                        <div class="flex flex-col space-y-3 align-left">
+                            {{ item.form_field }}
+                            {% if not item.is_file %}
+                                <a href="#" class="reset-link text-font-important-light dark:text-font-important-dark" data-field-id="{{ item.form_field.auto_id }}"
+                                    data-field-type="{% spaceless %}
+                                    {% if item.is_checkbox %}checkbox
+                                    {% elif item.is_datetime %}datetime
+                                    {% elif item.is_date %}date
+                                    {% endif %}
+                                    {% endspaceless %}"
+                                    data-default="{% spaceless %}
+                                    {% if item.is_checkbox %}{% if item.raw_default %} true {% else %} false {% endif %}
+                                    {% elif item.is_date %}{{ item.raw_default|date:'U' }}
+                                    {% elif item.is_datetime %}{{ item.raw_default|date:'U' }}
+                                    {% else %}{{ item.default }}
+                                    {% endif %}
+                                    {% endspaceless %}">{% trans "Return to default" %}
+                                </a>
+                            {% endif %}
+                        </div>
+
+                    </td>
+                    <td data-label="{% trans "Is modified" %}" class="field-actions_holder align-middle flex border-t border-gray-200 font-normal px-3 py-2 text-left text-sm before:block before:capitalize before:content-[attr(data-label)] before:mr-auto before:text-gray-500 dark:before:text-gray-300 lg:before:hidden lg:py-3 lg:table-cell dark:border-gray-800 lg:w-px">
+                        {% if item.modified %}
+                            <img class="start-image" src="{% static 'admin/img/icon-yes.'|add:icon_type %}" alt="{{ item.modified }}" >
+                        {% else %}
+                            <img class="start-image" src="{% static 'admin/img/icon-no.'|add:icon_type %}" alt="{{ item.modified }}">
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <style>
+        input[type=checkbox] {
+            max-width: fit-content;
+        }
+        
+        .datetimeshortcuts {
+            position: relative;
+        }
+        .time {
+           display: flex; 
+        }
+        .help {
+            font-size: 0.6875rem;
+        }
+
+        .reset-link:hover {
+            color: rgb(var(--color-primary-600)/var(--tw-bg-opacity));
+        }
+      
+        .start-image {
+            margin-left: 0 !important;
+        }
+
+        .errorlist {
+            color: rgb(255, 59, 48);
+            background-color: rgba(255, 59, 48, 0.1);
+            padding: 0.5rem;
+            border: 1px solid rgba(255, 59, 48, 0.5);
+            border-radius: 0.375rem;
+            font-size: 0.875rem; 
+            margin: 0.5rem 0; 
+        }    
+    </style>
+</div>
