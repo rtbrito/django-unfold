@@ -72,3 +72,8 @@ form .form-row .filer-dropzone .filerFile a.filerClearer {
 .filebrowser h2 {
     display: block !important;
 }
+
+td[data-label="Default"] {
+    max-width: 200px; /* Set a maximum width */
+    overflow-wrap: break-word; /* Ensure long words break */
+}

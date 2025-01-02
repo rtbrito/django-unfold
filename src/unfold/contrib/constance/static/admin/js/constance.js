@@ -1,9 +1,9 @@
-(function($) {
+(function ($) {
     'use strict';
 
-    $(function() {
+    $(function () {
 
-        $('#content-main').on('click', '.reset-link', function(e) {
+        $('#content-main').on('click', '.reset-link', function (e) {
             e.preventDefault();
 
             const field_selector = this.dataset.fieldId.replace(/ /g, "\\ ")
