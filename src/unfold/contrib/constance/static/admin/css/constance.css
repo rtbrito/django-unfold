@@ -77,3 +77,7 @@ td[data-label="Default"] {
     max-width: 200px; /* Set a maximum width */
     overflow-wrap: break-word; /* Ensure long words break */
 }
+
+.date {
+    display: flex;
+}

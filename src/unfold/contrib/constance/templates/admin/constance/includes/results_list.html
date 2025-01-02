@@ -62,7 +62,16 @@
                         {{ item.form_field.errors }}
                         {% if item.is_file %}{% trans "Current file" %}: <a class="text" href="{% get_media_prefix as MEDIA_URL %}{{ MEDIA_URL }}{{ item.value }}" target="_blank">{{ item.value }}</a>{% endif %}
                         <div class="flex flex-col space-y-3 align-left">
-                            {{ item.form_field }}
+                            {% if item.is_checkbox %}
+                                <input type="checkbox" name="{{ item.name }}" id="id_{{ item.name|slugify }}"
+                                    {% if item.value == "True" %}checked{% endif %} 
+                                    class="appearance-none bg-gray-300 cursor-pointer h-5 relative rounded-full transition-all w-8 min-w-8 
+                                            after:absolute after:bg-white after:content-[''] after:bg-red-300 after:h-3 after:rounded-full 
+                                            after:shadow-sm after:left-1 after:top-1 after:w-3 
+                                            checked:bg-green-500 checked:after:left-4 dark:bg-gray-600 dark:checked:bg-green-700 extra-class"> 
+                            {% else %}
+                                {{ item.form_field }}
+                            {% endif %}
                             {% if not item.is_file %}
                                 <a href="#" class="reset-link text-font-important-light dark:text-font-important-dark" data-field-id="{{ item.form_field.auto_id }}"
                                    data-field-type="{% spaceless %}
