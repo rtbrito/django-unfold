@@ -41,4 +41,3 @@
             .attr('rows', 3);
     });
 })(django.jQuery);
-

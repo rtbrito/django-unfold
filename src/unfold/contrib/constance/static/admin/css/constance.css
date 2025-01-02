@@ -19,7 +19,7 @@
 .item-anchor {
     visibility: hidden;
     margin-left: .1em;
-} 
+}
 .item-name {
     white-space: nowrap;
 }
@@ -33,9 +33,9 @@
     bottom: 0;
 }
 
-/* 
-  This file is used to apply styles in the folder page and to resolve issues 
-  related to the navbar when integrating with django-filer. 
+/*
+  This file is used to apply styles in the folder page and to resolve issues
+  related to the navbar when integrating with django-filer.
 */
 .filter-files-container .filter-files-button {
     position: relative !important;
@@ -59,14 +59,14 @@ form .form-row .filer-dropzone .filerFile a.filerClearer {
     background-color: transparent !important;
 }
 
-/* This is used to override the css of django filer. 
+/* This is used to override the css of django filer.
     Without this override, the navbar appears broken.
  */
 .simplebar-content>div {
     display: block !important;
 }
 
-/* This is used to override the css of django filer. 
+/* This is used to override the css of django filer.
     Without this override, the navbar appears broken.
  */
 .filebrowser h2 {
