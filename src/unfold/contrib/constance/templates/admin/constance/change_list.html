@@ -1,0 +1,86 @@
+{% extends "admin/base_site.html" %}
+{% load admin_list static i18n %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  {{ media.css }}
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/constance.css'%}">
+{% endblock %}
+
+{% block extrahead %}
+  {% url 'admin:jsi18n' as jsi18nurl %}
+  <script type="text/javascript" src="{{ jsi18nurl|default:'../../jsi18n/' }}"></script>
+  {{ block.super }}
+  {{ media.js }}
+  <script type="text/javascript" src="{% static 'admin/js/constance.js' %}"></script>
+  {% if django_version < "5.1" %}
+    <script type="text/javascript" src="{% static 'admin/js/collapse.js' %}"></script>
+  {% endif %}
+{% endblock %}
+
+
+
+{% block bodyclass %}{{ block.super }} change-list{% endblock %}
+
+{% block breadcrumbs %}
+  <div class="px-12">
+    <div class="container mb-12 mx-auto -my-3">
+      <ul class="flex flex-wrap">
+        {% url 'admin:index' as index_link %}
+        {% trans 'Home' as index_name %}
+        {% include 'unfold/helpers/breadcrumb_item.html' with link=index_link name=index_name %}
+
+        {% trans 'Constance' as constance_name %}
+        {% include 'unfold/helpers/breadcrumb_item.html' with name=constance_name %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div id="content-main" class="constance">
+    <div class="module" id="changelist">
+      <form id="changelist-form" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+        {% include "unfold/helpers/messages.html" %}
+
+        {% for field in form.hidden_fields %}
+          {% for error in field.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+          {{ field }}
+        {% endfor %}
+
+        {% if fieldsets %}
+          {% for fieldset in fieldsets %}
+            <fieldset class="module{% if fieldset.collapse %} collapse{% endif %}">
+              <h2 class="bg-gray-100 border border-transparent font-semibold mb-3 px-4 py-3 rounded-md text-font-important-light text-sm dark:bg-white/[.02] dark:border dark:border-gray-800 dark:text-font-important-dark {% if inline_admin_formset.opts.tab %}hidden{% endif %}">
+                {{ fieldset.title }}
+              </h2>
+              {% with config_values=fieldset.config_values %}
+                {% include "admin/constance/includes/results_list.html" %}
+              {% endwith %}
+            </fieldset>
+          {% endfor %}
+        {% else %}
+          {% include "admin/constance/includes/results_list.html" %}
+        {% endif %}
+
+        <div {% if not is_popup %}id="submit-row"{% endif %} class="relative z-20 {% if not is_popup %} mt-20 lg:mt-8{% endif %}">
+          <div class="{% if not is_popup %}lg:bottom-0 lg:left-0 lg:right-0{% endif %}" {% if not is_popup %}x-bind:class="{'xl:left-0': !sidebarDesktopOpen, 'xl:left-72': sidebarDesktopOpen}"{% endif %}>
+            <div class="bg-white dark:bg-gray-900 {% if not is_popup %}lg:border-t lg:py-4 relative lg:px-12 dark:border-gray-800{% endif %}">
+              <div class="container flex flex-col-reverse gap-3 items-center mx-auto lg:flex-row-reverse">
+                <p class="paginator sticky-footer">
+                  <button type="submit" name="_save" class="bg-primary-600 block border border-transparent font-medium px-3 py-2 rounded-md text-white w-full lg:w-auto">
+                    {% translate 'Save' %}
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

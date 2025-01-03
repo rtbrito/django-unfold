@@ -15,12 +15,6 @@ Unfold is a theme for Django admin that incorporates common best practices for b
 - **Turbo:** Django & Next.js boilerplate implementing Unfold at [github.com/unfoldadmin/turbo](https://github.com/unfoldadmin/turbo?utm_medium=github&utm_source=unfold).
 - **Discord:** Join the Unfold community on [Discord](https://discord.gg/9sQj9MEbNz).
 
-
-
-## Are you using Unfold and need help?
-
-Have you decided to start using Unfold but don’t have time to make the switch from the native Django admin? [Get in touch with us](https://unfoldadmin.com/consulting?utm_medium=github&utm_source=unfold) and let’s supercharge your development with our expertise.
-
 ## Features
 
 - **Visual**: Provides a new user interface based on the Tailwind CSS framework.
@@ -46,3 +40,14 @@ Have you decided to start using Unfold but don’t have time to make the switch 
 - **Configuration:** Most basic options can be changed in `settings.py`.
 - **Dependencies:** Fully based on `django.contrib.admin`.
 - **VS Code**: Project configuration and development container included.
+
+
+# Fork Updates
+## Features
+
+- Constance
+
+
+# Third party packages support
+
+- Constance
