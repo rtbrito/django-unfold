@@ -113,6 +113,11 @@ td[data-label="Default"] {
     overflow-wrap: break-word; /* Ensure long words break */
 }
 
-.date {
-    display: flex;
+#date-picker, #time-picker {
+    width: fit-content;
+    flex-direction: row;
+}
+
+.date-icon{
+    margin-left: .5rem;
 }

@@ -29,20 +29,20 @@ tests/server/example/settings.py
             ("Boolean"),
             "boolean_field",
         ),
-        "DATE": (
+        "Date": (
             date(year=2025, month=1, day=1),
             ("Date"),
-            date,
+            "date_field",
         ),
         "Time": (
             time(hour=20, minute=0),
             ("TIME"),
-            time,
+            "time_field",
         ),
-        "Range_Integer_Field": (
-            1,
-            ("Range Integer Field"),
-            "range_integer_field",
+        "File_atribute": (
+            "",
+            ("File"),
+            "filefield",
         ),
     }
 
@@ -51,7 +51,14 @@ tests/server/example/settings.py
             "django.forms.fields.IntegerField",
             {
                 "widget": "unfold.widgets.UnfoldAdminIntegerFieldWidget",
-            },
+            }
+        ],
+        "boolean_field": [
+            "django.forms.fields.BooleanField",
+            {
+                "widget": "unfold.widgets.UnfoldBooleanSwitchWidget",
+                "required": False,
+            }
         ],
         "weekday_select": [
             "django.forms.fields.ChoiceField",
@@ -68,18 +75,22 @@ tests/server/example/settings.py
                 ),
             },
         ],
-        "range_integer_field": [
-            "django.forms.fields.IntegerField",
+        "filefield": [
+            "django.forms.fields.FileField",
             {
-                "widget": "unfold.widgets.UnfoldAdminIntegerRangeWidget",
-                "lower": 1,
-                "upper": 30,
-            },
+                "widget": "unfold.widgets.UnfoldAdminFileFieldWidget",
+            }
         ],
-        "boolean_field": [
-            "django.forms.fields.BooleanField",
+        "date_field": [
+            "django.forms.fields.DateField",
             {
-                "widget": "unfold.widgets.UnfoldBooleanSwitchWidget",
+                "widget": "unfold.widgets.UnfoldAdminDateWidget",
+            }
+        ],
+        "time_field": [
+            "django.forms.fields.TimeField",
+            {
+                "widget": "unfold.widgets.UnfoldAdminTimeWidget",
             }
         ],
     }
@@ -89,9 +100,9 @@ tests/server/example/settings.py
             "fields": (
                 "Select",
                 "Bool",
-                "DATE",
+                "Date",
                 "Time",
-                "Range_Integer_Field",
+                "File_atribute",
             )
         },
     }
