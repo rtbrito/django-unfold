@@ -15,12 +15,6 @@ Unfold is a theme for Django admin that incorporates common best practices for b
 - **Turbo:** Django & Next.js boilerplate implementing Unfold at [github.com/unfoldadmin/turbo](https://github.com/unfoldadmin/turbo?utm_medium=github&utm_source=unfold).
 - **Discord:** Join the Unfold community on [Discord](https://discord.gg/9sQj9MEbNz).
 
-
-
-## Are you using Unfold and need help?
-
-Have you decided to start using Unfold but don’t have time to make the switch from the native Django admin? [Get in touch with us](https://unfoldadmin.com/consulting?utm_medium=github&utm_source=unfold) and let’s supercharge your development with our expertise.
-
 ## Features
 
 - **Visual**: Provides a new user interface based on the Tailwind CSS framework.
@@ -46,3 +40,109 @@ Have you decided to start using Unfold but don’t have time to make the switch 
 - **Configuration:** Most basic options can be changed in `settings.py`.
 - **Dependencies:** Fully based on `django.contrib.admin`.
 - **VS Code**: Project configuration and development container included.
+
+
+# Fork Updates
+## Features
+
+- Constance
+
+
+# Third party packages
+
+- Constance
+
+
+## Constance
+
+tests/server/example/settings.py
+```python
+    INSTALLED_APPS = [
+        "unfold",
+        "unfold.contrib.constance",
+        ...
+        "constance",
+    ]
+
+    CONSTANCE_CONFIG = {
+        "Select": (
+            "Sunday",
+            ("The day of the week"),
+            "weekday_select",
+        ),
+        "Bool": (
+            False,
+            ("Boolean"),
+            "boolean_field",
+        ),
+        "DATE": (
+            date(year=2025, month=1, day=1),
+            ("Date"),
+            date,
+        ),
+        "Time": (
+            time(hour=20, minute=0),
+            ("TIME"),
+            time,
+        ),
+        "Range_Integer_Field": (
+            1,
+            ("Range Integer Field"),
+            "range_integer_field",
+        ),
+    }
+
+    CONSTANCE_ADDITIONAL_FIELDS = {
+        "integer_field": [
+            "django.forms.fields.IntegerField",
+            {
+                "widget": "unfold.widgets.UnfoldAdminIntegerFieldWidget",
+            },
+        ],
+        "weekday_select": [
+            "django.forms.fields.ChoiceField",
+            {
+                "widget": "unfold.widgets.UnfoldAdminSelectWidget",
+                "choices": (
+                    (0, ("Sunday")),
+                    (1, ("Monday")),
+                    (2, ("Tuesday")),
+                    (3, ("Wednesday")),
+                    (4, ("Thursday")),
+                    (5, ("Friday")),
+                    (6, ("Saturday")),
+                ),
+            },
+        ],
+        "range_integer_field": [
+            "django.forms.fields.IntegerField",
+            {
+                "widget": "unfold.widgets.UnfoldAdminIntegerRangeWidget",
+                "lower": 1,
+                "upper": 30,
+            },
+        ],
+        "boolean_field": [
+            "django.forms.fields.BooleanField",
+            {
+                "widget": "unfold.widgets.UnfoldBooleanSwitchWidget",
+            }
+        ],
+    }
+
+    CONSTANCE_CONFIG_FIELDSETS = {
+        "Test": {
+            "fields": (
+                "Select",
+                "Bool",
+                "DATE",
+                "Time",
+                "Range_Integer_Field",
+            )
+        },
+    }
+
+    CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
+
+    TIME_ZONE = "Europe/Lisbon"
+```
