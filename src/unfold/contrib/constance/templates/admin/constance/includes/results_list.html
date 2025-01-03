@@ -83,14 +83,14 @@
                         </div>
 
                     </td>
-                    </td>
-                    <td data-label="{% trans "Is modified" %}" class="field-actions_holder align-middle flex border-t border-gray-200 font-normal px-3 py-2 text-left text-sm before:block before:capitalize before:content-[attr(data-label)] before:mr-auto before:text-gray-500 dark:before:text-gray-300 lg:before:hidden lg:py-3 lg:table-cell dark:border-gray-800 lg:w-px">
-                        {% if item.modified %}
-                            <img class="start-image" src="{% static 'admin/img/icon-yes.'|add:icon_type %}" alt="{{ item.modified }}">
-                        {% else %}
-                            <img class="start-image" src="{% static 'admin/img/icon-no.'|add:icon_type %}" alt="{{ item.modified }}">
-                        {% endif %}
-                    </td>
+                </td>
+                <td data-label="{% trans "Is modified" %}" class="field-actions_holder align-middle flex border-t border-gray-200 font-normal px-3 py-2 text-left text-sm before:block before:capitalize before:content-[attr(data-label)] before:mr-auto before:text-gray-500 dark:before:text-gray-300 lg:before:hidden lg:py-3 lg:table-cell dark:border-gray-800 lg:w-px">
+                    {% if item.modified %}
+                        <img class="start-image" src="{% static 'admin/img/icon-yes.'|add:icon_type %}" alt="{{ item.modified }}">
+                    {% else %}
+                        <img class="start-image" src="{% static 'admin/img/icon-no.'|add:icon_type %}" alt="{{ item.modified }}">
+                    {% endif %}
+                </td>
                 </tr>
             {% endfor %}
         </tbody>
