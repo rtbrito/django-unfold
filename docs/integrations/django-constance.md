@@ -11,6 +11,10 @@ To make this application work, add `unfold.contrib.constance` into `settings.py`
 
 tests/server/example/settings.py
 ```python
+    from datetime import date, datetime, time
+    from decimal import Decimal
+    from django.core.files import File
+
     INSTALLED_APPS = [
         "unfold",
         "unfold.contrib.constance",
@@ -19,47 +23,65 @@ tests/server/example/settings.py
     ]
 
     CONSTANCE_CONFIG = {
+        "String": (
+            "default",
+            "String",
+            str,
+        ),
+        "TextArea": (
+            "",
+            "TextArea",
+            "textarea",
+        ),
+        "Int": (
+            0,
+            "Integer",
+            int,
+        ),
+        "Float": (
+            0.01,
+            "Float",
+            float,
+        ),
+        "Decimal": (
+            0.02,
+            "Decimal",
+            Decimal,
+        ),
         "Select": (
             "Sunday",
-            ("The day of the week"),
+            "The day of the week",
             "weekday_select",
         ),
         "Bool": (
             False,
-            ("Boolean"),
-            "boolean_field",
+            "Boolean",
+            bool,
         ),
         "Date": (
             date(year=2025, month=1, day=1),
-            ("Date"),
-            "date_field",
+            "Date",
+            date,
         ),
         "Time": (
             time(hour=20, minute=0),
-            ("TIME"),
-            "time_field",
+            "TIME",
+            time,
         ),
-        "File_atribute": (
+        "Datetime": (
+            datetime(year=2025, month=1, day=1, hour=20, minute=0),
+            "DateTime",
+            datetime,
+        ),
+        "File": (
             "",
-            ("File"),
-            "filefield",
+            "File",
+            File,
         ),
     }
 
+    # Example of an additional custom field
     CONSTANCE_ADDITIONAL_FIELDS = {
-        "integer_field": [
-            "django.forms.fields.IntegerField",
-            {
-                "widget": "unfold.widgets.UnfoldAdminIntegerFieldWidget",
-            }
-        ],
-        "boolean_field": [
-            "django.forms.fields.BooleanField",
-            {
-                "widget": "unfold.widgets.UnfoldBooleanSwitchWidget",
-                "required": False,
-            }
-        ],
         "weekday_select": [
             "django.forms.fields.ChoiceField",
             {
@@ -75,34 +97,22 @@ tests/server/example/settings.py
                 ),
             },
         ],
-        "filefield": [
-            "django.forms.fields.FileField",
-            {
-                "widget": "unfold.widgets.UnfoldAdminFileFieldWidget",
-            }
-        ],
-        "date_field": [
-            "django.forms.fields.DateField",
-            {
-                "widget": "unfold.widgets.UnfoldAdminDateWidget",
-            }
-        ],
-        "time_field": [
-            "django.forms.fields.TimeField",
-            {
-                "widget": "unfold.widgets.UnfoldAdminTimeWidget",
-            }
-        ],
     }
 
     CONSTANCE_CONFIG_FIELDSETS = {
         "Test": {
             "fields": (
+                "String",
+                "TextArea",
+                "Int",
+                "Float",
+                "Decimal",
                 "Select",
                 "Bool",
                 "Date",
                 "Time",
-                "File_atribute",
+                "Datetime",
+                "File",
             )
         },
     }

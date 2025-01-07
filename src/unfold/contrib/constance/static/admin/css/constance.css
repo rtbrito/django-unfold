@@ -1,49 +1,3 @@
-#result_list .changed {
-    background-color: #ffc;
-}
-#changelist table thead th .text {
-    padding: 2px 5px;
-}
-#changelist table tbody td:first-child {
-    text-align: left;
-}
-#changelist-form ul.errorlist {
-    margin: 0 !important;
-}
-.help {
-    font-weight: normal !important;
-    font-size: 0.6875rem;
-}
-#results {
-    overflow-x: auto;
-}
-.item-anchor {
-    visibility: hidden;
-    margin-left: .1em;
-}
-.item-name {
-    white-space: nowrap;
-}
-.item-name:hover .item-anchor {
-    visibility: visible;
-}
-.sticky-footer {
-    position: sticky;
-    bottom: 0;
-}
-
-input[type=checkbox] {
-    max-width: fit-content;
-}
-
-.datetimeshortcuts {
-    position: relative;
-}
-.time {
-    display: flex;
-}
-
-
 .reset-link:hover {
     color: rgb(var(--color-primary-600)/var(--tw-bg-opacity));
 }
@@ -63,61 +17,27 @@ input[type=checkbox] {
     margin: 0.5rem 0;
 }
 
-/*
-This file is used to apply styles in the folder page and to resolve issues
-related to the navbar when integrating with django-filer.
-*/
-.filter-files-container .filter-files-button {
-    position: relative !important;
-    z-index: 2 !important;
-    width: 35px !important;
+td[data-label="Name"]>div {
+    max-width: 350px;
+    /* Set a maximum width */
+    overflow-wrap: break-word;
+    /* Ensure long words break */
 }
 
-#main .breadcrumbs {
-    display: none;
+td[data-label="Default"]>div {
+    max-width: 200px;
+    /* Set a maximum width */
+    overflow-wrap: break-word;
+    /* Ensure long words break */
 }
 
-.actionsIcons {
-    display: flex;
-    padding: 10px;
-    margin: 10px 0;
-    column-gap: 15px;
+td[data-label="Value"]>div {
+    max-width: 75%;
+    overflow-wrap: break-word;
 }
 
-form .form-row .filer-dropzone .filerFile a.filerClearer {
-    border: 1px solid rgb(107 114 128/var(--tw-text-opacity)) !important;
-    background-color: transparent !important;
-}
-
-/* This is used to override the css of django filer.
-    Without this override, the navbar appears broken.
-*/
-.simplebar-content>div {
-    display: block !important;
-}
-
-/* This is used to override the css of django filer.
-    Without this override, the navbar appears broken.
-*/
-.filebrowser h2 {
-    display: block !important;
-}
-
-td[data-label="Name"] {
-    max-width: 350px; /* Set a maximum width */
-    overflow-wrap: break-word; /* Ensure long words break */
-}
-
-td[data-label="Default"] {
-    max-width: 200px; /* Set a maximum width */
-    overflow-wrap: break-word; /* Ensure long words break */
-}
-
-#date-picker, #time-picker {
+#date-picker,
+#time-picker {
     width: fit-content;
     flex-direction: row;
-}
-
-.date-icon{
-    margin-left: .5rem;
 }

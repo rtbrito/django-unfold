@@ -50,4 +50,4 @@ Unfold is a theme for Django admin that incorporates common best practices for b
 
 # Third party packages support
 
-- Constance
+- Constance -> [documentation](docs/integrations/django-constance.md)
