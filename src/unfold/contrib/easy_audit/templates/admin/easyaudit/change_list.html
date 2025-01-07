@@ -1,0 +1,28 @@
+{% extends "admin/change_list.html" %}
+{% load static i18n %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  {{ media.css }}
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/easyaudit.css'%}">
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_superuser %}
+    <div class="flex items-start flex-col mb-4 text-sm w-full md:border-b dark:md:border-gray-800 md:border-l-0 md:flex-row md:items-center md:justify-end">
+        <ul class="border flex flex-col font-medium mb-4 mt-2 rounded-md shadow-sm md:flex-row md:mb-2 md:mt-0 dark:border-gray-800 max-md:w-full">
+        <li>
+            {% with purge_url="admin:"|add:cl.opts.app_label|add:"_"|add:cl.opts.model_name|add:"_purge" %}
+                <a href="{% url purge_url %}" class="bg-red-600 flex items-center justify-center font-medium h-9.5 ml-auto px-3 py-2 rounded-md text-white dark:bg-red-500/20 dark:text-red-500">
+                    {% blocktrans with cl.opts.verbose_name_plural as name %}Purge {{ name }}{% endblocktrans %}
+                </a>
+            {% endwith %}
+        </li>
+    </ul>
+    
+</div>
+    {% endif %}
+    {{ block.super }}
+    
+{% endblock content %}
