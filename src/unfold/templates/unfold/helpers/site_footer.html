@@ -1,0 +1,14 @@
+{% load i18n %}
+
+{% if site_footer.light and site_footer.dark %}
+    <footer class="bg-white justify-between items-center bottom-0 left-0 w-full z-50 block dark:hidden">
+        <img src="{{ site_footer.dark }}" alt="{% trans 'Footer' %}" class="max-w-full h-auto ml-auto"/>
+    </footer>
+    <footer class="bg-white justify-between items-center bottom-0 left-0 w-full z-50 hidden dark:block">
+        <img src="{{ site_footer.light }}" alt="{% trans 'Footer' %}" class="max-w-full h-auto ml-auto" />
+    </footer>
+{% else %}
+    <footer class="bg-white block justify-between items-center bottom-0 left-0 w-full z-50">
+        <img src="{{ site_footer }}" alt="{% trans 'Footer' %}" class="max-w-full h-auto ml-auto" />
+    </footer>
+{% endif %}

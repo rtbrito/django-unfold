@@ -10,6 +10,7 @@ CONFIG_DEFAULTS = {
     "SITE_SYMBOL": None,
     "SITE_LOGO": None,
     "SITE_FAVICONS": [],
+    "SITE_FOOTER": None,
     "SHOW_HISTORY": True,
     "SHOW_VIEW_ON_SITE": True,
     "SHOW_LANGUAGES": False,

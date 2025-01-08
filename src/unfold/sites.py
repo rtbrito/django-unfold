@@ -81,6 +81,9 @@ class UnfoldAdminSite(AdminSite):
                 "site_favicons": self._process_favicons(
                     request, get_config(self.settings_name)["SITE_FAVICONS"]
                 ),
+                "site_footer": self._get_mode_images(
+                    get_config(self.settings_name)["SITE_FOOTER"], request
+                ),
                 "show_history": get_config(self.settings_name)["SHOW_HISTORY"],
                 "show_view_on_site": get_config(self.settings_name)[
                     "SHOW_VIEW_ON_SITE"

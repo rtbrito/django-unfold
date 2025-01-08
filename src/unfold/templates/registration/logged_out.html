@@ -2,6 +2,12 @@
 
 {% load i18n %}
 
+{% block title %}
+    {{ title }} | {{ site_title }}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }}bg-gray-50 login dark:bg-gray-900{% endblock %}
+
 {% block base %}
     <div class="flex min-h-screen">
         <div class="flex flex-grow items-center justify-center mx-auto px-4">
@@ -11,10 +17,6 @@
                         {% trans "You have been successfully logged out from the administration" %}
                     </span>
                 </h1>
-
-                <p class="mb-10">
-                    {% translate "Thanks for spending some quality time with the web site today." %}
-                </p>
 
                 <a href="{% url "admin:index" %}" class="bg-primary-600 block border border-transparent font-semibold py-2 rounded-md text-sm text-center text-white w-full">
                     {% translate "Log in again" %}

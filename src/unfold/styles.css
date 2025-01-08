@@ -210,6 +210,7 @@ table tr.selected th {
 .selector-filter {
   @apply flex;
 }
+
 .selector-filter input {
   @apply bg-gray-100 block flex-grow font-medium mb-3 mx-3 px-3 py-2 rounded-md text-gray-500 text-sm focus:outline-none dark:bg-gray-800 dark:text-gray-300;
 }
@@ -298,65 +299,44 @@ h3 span:nth-child(3) {
   @apply border-red-600;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--single {
+.select2-container.select2-container--admin-autocomplete .select2-selection--single {
   @apply h-auto;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--single
-  .select2-selection__rendered {
+.select2-container.select2-container--admin-autocomplete .select2-selection--single .select2-selection__rendered {
   @apply font-medium h-9 px-3 py-2 text-gray-500 text-sm dark:text-gray-300;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--multiple
-  .select2-selection__clear,
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--single
-  .select2-selection__clear {
+.select2-container.select2-container--admin-autocomplete .select2-selection--multiple .select2-selection__clear,
+.select2-container.select2-container--admin-autocomplete .select2-selection--single .select2-selection__clear {
   @apply flex items-center h-9 -mt-2 text-0;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--multiple
-  .select2-selection__clear:after,
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--single
-  .select2-selection__clear:after {
+.select2-container.select2-container--admin-autocomplete .select2-selection--multiple .select2-selection__clear:after,
+.select2-container.select2-container--admin-autocomplete .select2-selection--single .select2-selection__clear:after {
   @apply material-symbols-outlined text-gray-500;
   content: "close";
   font-size: 14px;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--single
-  .select2-selection__arrow {
+.select2-container.select2-container--admin-autocomplete .select2-selection--single .select2-selection__arrow {
   @apply flex h-9 items-center mr-2 -mt-px;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--single
-  .select2-selection__arrow:after {
+.select2-container.select2-container--admin-autocomplete .select2-selection--single .select2-selection__arrow:after {
   @apply left-0 leading-none m-0 material-symbols-outlined text-gray-500 text-lg;
   content: "expand_more";
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--single
-  .select2-selection__arrow
-  b {
+.select2-container.select2-container--admin-autocomplete .select2-selection--single .select2-selection__arrow b {
   @apply hidden;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-search--dropdown {
+.select2-container.select2-container--admin-autocomplete .select2-search--dropdown {
   @apply flex px-3 py-2;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-search--dropdown
-  .select2-search__field {
+.select2-container.select2-container--admin-autocomplete .select2-search--dropdown .select2-search__field {
   @apply bg-gray-50 border border-gray-200 border-solid flex-grow font-medium mx-0 outline-none px-3 py-2 rounded-md shadow-sm text-gray-500 text-sm w-full dark:bg-gray-800 dark:border-gray-800 dark:text-gray-300;
 }
 
@@ -380,61 +360,42 @@ h3 span:nth-child(3) {
   @apply rounded-b-none rounded-t-md after:bottom-0 after:-mb-1 after:mt-0 after:top-auto;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-results__option {
+.select2-container.select2-container--admin-autocomplete .select2-results__option {
   @apply block px-3 py-2 text-gray-500 text-sm transition-all dark:text-gray-300;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-results__option--highlighted[aria-selected] {
+.select2-container.select2-container--admin-autocomplete .select2-results__option--highlighted[aria-selected] {
   @apply text-primary-500;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--multiple
-  .select2-selection__clear {
+.select2-container.select2-container--admin-autocomplete .select2-selection--multiple .select2-selection__clear {
   @apply m-0 mr-2 top-0;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--multiple
-  .select2-selection__rendered {
+.select2-container.select2-container--admin-autocomplete .select2-selection--multiple .select2-selection__rendered {
   @apply pl-1 pr-6 py-0 pt-1;
 }
 
-.select2-container.select2-container--admin-autocomplete
-  .select2-selection--single
-  .select2-selection__rendered {
+.select2-container.select2-container--admin-autocomplete .select2-selection--single .select2-selection__rendered {
   @apply pr-8;
 }
 
-.select2-container--admin-autocomplete
-  .select2-selection--multiple
-  li.select2-selection__choice {
+.select2-container--admin-autocomplete .select2-selection--multiple li.select2-selection__choice {
   @apply bg-gray-100 block font-medium h-7 leading-7 m-0 mr-1 mb-1 px-2 shadow-inner text-sm text-gray-600 hover:text-gray-700 truncate dark:bg-gray-800 dark:text-gray-300 dark:hover:text-gray-200;
 }
 
-.select2-container--admin-autocomplete
-  .select2-selection--multiple
-  li.select2-selection__choice
-  .select2-selection__choice__remove {
+.select2-container--admin-autocomplete .select2-selection--multiple li.select2-selection__choice .select2-selection__choice__remove {
   @apply align-top text-0 hover:text-gray-600 dark:hover:text-gray-200;
 }
 
-.select2-container--admin-autocomplete
-  .select2-selection--multiple
-  li.select2-selection__choice
-  .select2-selection__choice__remove:after {
+.select2-container--admin-autocomplete .select2-selection--multiple li.select2-selection__choice .select2-selection__choice__remove:after {
   @apply h-7 !leading-7 material-symbols-outlined;
 
   content: "close";
   font-size: 14px;
 }
 
-.select2-container--admin-autocomplete
-  .select2-selection--multiple
-  li.select2-search--inline
-  .select2-search__field {
+.select2-container--admin-autocomplete .select2-selection--multiple li.select2-search--inline .select2-search__field {
   @apply m-0 h-7 text-gray-500 text-sm;
 }
 
@@ -445,7 +406,7 @@ h3 span:nth-child(3) {
 /*******************************************************
  Fieldset collapsible
  *******************************************************/
-fieldset.collapsed > div {
+fieldset.collapsed>div {
   display: none;
 }
 
@@ -462,16 +423,16 @@ fieldset.collapsed .collapse-toggle {
   @apply inline;
 }
 
-fieldset details > summary {
+fieldset details>summary {
   @apply list-none
 }
 
-fieldset details > summary:after {
+fieldset details>summary:after {
   @apply material-symbols-outlined absolute right-3 top-3.5;
   content: "expand_more";
 }
 
-fieldset details[open] > summary:after {
+fieldset details[open]>summary:after {
   @apply rotate-180;
 }
 
@@ -508,7 +469,7 @@ fieldset details[open] > summary:after {
 }
 
 .calendar table td.today a {
-  @apply bg-primary-600 font-medium  text-white;
+  @apply bg-primary-600 font-medium text-white;
 }
 
 .calendar-shortcuts {
@@ -559,6 +520,7 @@ fieldset details[open] > summary:after {
 .clockbox h2 {
   @apply font-medium px-3 py-2 text-gray-700 dark:text-gray-200;
 }
+
 .clockbox .timelist {
   @apply pb-2 px-3 text-gray-500 dark:text-gray-300;
 }
@@ -566,6 +528,7 @@ fieldset details[open] > summary:after {
 .clockbox .timelist li {
   @apply block pb-1 transition-all;
 }
+
 .clockbox .timelist li:hover {
   @apply text-primary-500;
 }
@@ -645,16 +608,32 @@ trix-toolbar[id^="trix-toolbar-"] {
 }
 
 .ui-tabs.ui-widget .ui-tabs-nav li.ui-tabs-active a {
-  @apply flex flex-row font-medium items-center px-2.5 py-1 rounded  bg-white shadow-sm text-gray-700 hover:bg-white dark:bg-gray-900 dark:hover:bg-gray-900 dark:text-white;
+  @apply flex flex-row font-medium items-center px-2.5 py-1 rounded bg-white shadow-sm text-gray-700 hover:bg-white dark:bg-gray-900 dark:hover:bg-gray-900 dark:text-white;
 }
 
 /*******************************************************
  Simplebar
  *******************************************************/
 .simplebar-track .simplebar-scrollbar::before {
-  @apply bg-gray-900/80  dark:bg-gray-400/80;
+  @apply bg-gray-900/80 dark:bg-gray-400/80;
 }
 
 .simplebar-horizontal-scrollbar-top .simplebar-track.simplebar-horizontal {
   @apply top-9
+}
+
+/*******************************************************
+ Footer
+ *******************************************************/
+footer {
+  @apply p-5;
+}
+
+footer img {
+  @apply mr-12;
+}
+
+.login footer,
+.logout footer {
+  @apply fixed;
 }

@@ -10,39 +10,50 @@
 Unfold is a theme for Django admin that incorporates common best practices for building full-fledged admin areas. It is designed to work on top of the default administration provided by Django.
 
 - **Documentation:** Full docs are available at [unfoldadmin.com](https://unfoldadmin.com?utm_medium=github&utm_source=unfold).
-- **Unfold:** Demo site is available at [unfoldadmin.com](https://unfoldadmin.com?utm_medium=github&utm_source=unfold).
 - **Formula:** Repository with demo implementation at [github.com/unfoldadmin/formula](https://github.com/unfoldadmin/formula?utm_medium=github&utm_source=unfold).
-- **Turbo:** Django & Next.js boilerplate implementing Unfold at [github.com/unfoldadmin/turbo](https://github.com/unfoldadmin/turbo?utm_medium=github&utm_source=unfold).
-- **Discord:** Join the Unfold community on [Discord](https://discord.gg/9sQj9MEbNz).
+
+## Table of contents <!-- omit from toc -->
+
+- [Fork Updates](#fork-updates)
+- [Third party packages support](#third-party-packages-support)
+- [Instalattion](#installation)
+
+## Fork Updates <!-- omit from toc -->
+- Constance
+- Footer
 
 
+## Third party packages support <!-- omit from toc -->
 
-## Are you using Unfold and need help?
+- Constance -> [documentation and settings.py example](docs/integrations/django-constance.md)
 
-Have you decided to start using Unfold but don’t have time to make the switch from the native Django admin? [Get in touch with us](https://unfoldadmin.com/consulting?utm_medium=github&utm_source=unfold) and let’s supercharge your development with our expertise.
 
-## Features
+## Installation <!-- omit from toc -->
+### Compiling Styles
 
-- **Visual**: Provides a new user interface based on the Tailwind CSS framework.
-- **Sidebar:** Simplifies the creation of sidebar navigation with icons, collapsibles, and more.
-- **Dark mode:** Supports both light and dark mode versions.
-- **Actions:** Offers multiple ways to define actions within different parts of the admin interface.
-- **Filters:** Custom dropdowns, numeric, datetime, and text fields.
-- **Dashboard:** Includes helpers for creating custom dashboard pages.
-- **Components:** Reusable UI components such as cards, buttons, and charts.
-- **WYSIWYG widget:** Built-in support for WYSIWYG (Trix).
-- **Array widget:** Built-in widget for `django.contrib.postgres.fields.ArrayField`.
-- **Inline tabs:** Groups inlines into tab navigation in the change form.
-- **Model tabs:** Allows defining custom tab navigation for models.
-- **Fieldset tabs:** Merges multiple fieldsets into tabs in the change form.
-- **Sortable inlines:** Allows sorting inlines by dragging and dropping.
-- **Environment label**: Distinguishes between environments by displaying a label.
-- **Nonrelated inlines**: Displays nonrelated models as inlines in the change form.
-- **Favicons**: Built-in support for configuring various site favicons.
-- **Colors:** Allows customization of the default color scheme.
-- **Changeform modes:** Displays fields in compressed mode in the change form.
-- **Parallel admin**: Supports [running the default admin](https://unfoldadmin.com/blog/migrating-django-admin-unfold/?utm_medium=github&utm_source=unfold) alongside Unfold.
-- **Third party packages:** Default support for multiple popular applications.
-- **Configuration:** Most basic options can be changed in `settings.py`.
-- **Dependencies:** Fully based on `django.contrib.admin`.
-- **VS Code**: Project configuration and development container included.
+When creating a custom admin dashboard, you are going to locate all your HTML code with Tailwind classes in your project, so newly added dashboard styles are not compiled. To do so, the first thing which is needed is to edit `UNFOLD` variable in `settings.py` and add `STYLES` key pointing at the new CSS stylesheet containing all new styles.
+
+```python
+# settings.py
+from django.templatetags.static import static
+
+
+UNFOLD = {
+    "STYLES": [
+        lambda request: static("css/styles.css"),
+    ],
+}
+```
+
+Before compiling the styles it is important to install all node dependencies as well which in our case contain just TailwindCSS and its typography plugin for styling formatted blocks of texts inside the WYSIWYG editor.
+
+```bash
+npm install
+```
+To compile new styles, run one of the commands below depending on your needs. To see what exactly the commands are doing and how the files are linked check `scripts` section inside `package.json`.
+
+
+```bash
+npm run tailwind:build  # one-time build
+npm run tailwind:watch  # watch all files for changes
+```
